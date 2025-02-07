@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace lb_1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250207160641_addCategoryTableToDatabase")]
+    [Migration("20250207174555_addCategoryTableToDatabase")]
     partial class addCategoryTableToDatabase
     {
         /// <inheritdoc />
@@ -38,6 +38,25 @@ namespace lb_1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
+                });
+
+            modelBuilder.Entity("lb_1.Models.Manufacturer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Manufacturer");
                 });
 #pragma warning restore 612, 618
         }
